@@ -139,7 +139,7 @@ Isi:
 
 * **Password root** → ketik → ENTER
 * **Confirm password** → ketik → ENTER
-* **Email** → opsional (boleh kosong di lab)
+* **Email** → opsional (isi asal berakhiran @gmail.com)
 
 ➡️ Pilih **<Next>** → ENTER
 
