@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Install Moodle LMS</title>
+    <style>
+        @media print {
+            body { margin: 0; padding: 20px; }
+            .no-print { display: none; }
+            .page-break { page-break-before: always; }
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            background: white;
+            padding: 40px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #f37121 0%, #ff6b35 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+        
+        .header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+        }
+        
+        h2 {
+            color: #f37121;
+            border-left: 5px solid #f37121;
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        
+        h3 {
+            color: #555;
+            margin-top: 20px;
+        }
+        
+        .step {
+            background: #fff8f4;
+            border-left: 4px solid #f37121;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .step-number {
+            background: #f37121;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-block;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .danger-box {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .tip-box {
+            background: #f3e5f5;
+            border-left: 4px solid #9c27b0;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: #c7254e;
+        }
+        
+        pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 13px;
+            position: relative;
+        }
+        
+        pre code {
+            background: transparent;
+            color: #f8f8f2;
+            padding: 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        table th {
+            background: #f37121;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        
+        table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        .btn-download {
+            background: #f37121;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 20px 0;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .btn-download:hover {
+            background: #d96419;
+        }
+        
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 25px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        .checklist {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .checklist li:before {
+            content: "✓ ";
+            color: #28a745;
+            font-weight: bold;
+            font-size: 18px;
+            margin-right: 10px;
+        }
+        
+        .topology {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: monospace;
+            font-size: 13px;
+        }
+        
+        .command-title {
+            background: #f37121;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 PANDUAN LENGKAP</h1>
+            <h1>INSTALL MOODLE LMS</h1>
+            <p>Learning Management System untuk Ujian Praktik TKJ 2025/2026</p>
+        </div>
+
+        <button class="btn-download no-print" onclick="window.print()">📄 Download/Cetak PDF</button>
+
+        <!-- ARSITEKTUR -->
+        <h2>🏗️ ARSITEKTUR SISTEM</h2>
+        
+        <div class="topology">
+<strong>Topologi Sistem Moodle:</strong>
+
+┌─────────────────────────────────────────┐
+│         VM Web Server (192.168.xx.2)    │
+│  ┌──────────────────────────────────┐   │
+│  │  Apache Web Server (Port 80)     │   │
+│  │  - Moodle Application            │   │
+│  │  - PHP 8.1                       │   │
+│  └──────────────────────────────────┘   │
+└─────────────────┬───────────────────────┘
+                  │ MySQL Connection
+                  ↓
+┌─────────────────────────────────────────┐
+│       VM Database Server (192.168.xx.3) │
+│  ┌──────────────────────────────────┐   │
+│  │  MySQL Database Server           │   │
+│  │  - Database: moodle              │   │
+│  │  - User: moodleuser              │   │
+│  └──────────────────────────────────┘   │
+└─────────────────────────────────────────┘
+        </div>
+
+        <!-- PERSIAPAN -->
+        <h2>📋 PERSIAPAN</h2>
+        
+        <div class="info-box">
+            <strong>Yang Anda Butuhkan:</strong>
+            <ul class="checklist">
+                <li>2 VM Ubuntu Server sudah terinstall dan running</li>
+                <li>VM Web Server: 192.168.xx.2/29</li>
+                <li>VM Database Server: 192.168.xx.3/29</li>
+                <li>Koneksi internet aktif di kedua VM</li>
+                <li>Akses SSH atau Console ke VM</li>
+            </ul>
+        </div>
+
+        <div class="warning-box">
+            <strong>⚠️ PENTING:</strong> Ganti <code>xx</code> dengan nomor absen Anda di semua konfigurasi!
+        </div>
+
+        <!-- BAGIAN 1: DATABASE SERVER -->
+        <div class="page-break"></div>
+        <h2>💾 BAGIAN 1: SETUP DATABASE SERVER</h2>
+
+        <div class="step">
+            <h3><span class="step-number">1</span>Login ke VM Database Server</h3>
+            
+            <div class="command-title">VIA SSH:</div>
+            <pre><code>ssh admin@192.168.xx.3
+# Masukkan password VM</code></pre>
+
+            <div class="command-title">VIA CONSOLE PROXMOX:</div>
+            <ul>
+                <li>Buka Proxmox Web Interface</li>
+                <li>Klik VM Database (101)</li>
+                <li>Klik <strong>Console</strong></li>
+                <li>Login dengan username & password VM</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">2</span>Update Sistem</h3>
+            <pre><code># Update package list
+sudo apt update
+
+# Upgrade semua package
+sudo apt upgrade -y
+
+# Install tools yang dibutuhkan
+sudo apt install net-tools curl wget -y</code></pre>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">3</span>Install MySQL Server</h3>
+            <pre><code># Install MySQL Server
+sudo apt install mysql-server -y
+
+# Cek status MySQL
+sudo systemctl status mysql
+
+# Jika belum running, start MySQL
+sudo systemctl start mysql
+
+# Enable auto start saat boot
+sudo systemctl enable mysql</code></pre>
+
+            <div class="success-box">
+                ✅ MySQL Server berhasil terinstall!
+            </div>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">4</span>Secure MySQL Installation</h3>
+            <pre><code>sudo mysql_secure_installation</code></pre>
+
+            <div class="info-box">
+                <strong>Jawaban untuk pertanyaan:</strong><br><br>
+                <strong>1. VALIDATE PASSWORD COMPONENT:</strong><br>
+                → Ketik: <code>n</code> (No) - tidak perlu password complexity<br><br>
+                
+                <strong>2. Set root password:</strong><br>
+                → Ketik: <code>y</code> (Yes)<br>
+                → Password: <code>RootDB123!</code> (atau password Anda)<br>
+                → Re-enter password: <code>RootDB123!</code><br><br>
+                
+                <strong>3. Remove anonymous users:</strong><br>
+                → Ketik: <code>y</code> (Yes)<br><br>
+                
+                <strong>4. Disallow root login remotely:</strong><br>
+                → Ketik: <code>n</code> (No) - kita butuh akses remote<br><br>
+                
+                <strong>5. Remove test database:</strong><br>
+                → Ketik: <code>y</code> (Yes)<br><br>
+                
+                <strong>6. Reload privilege tables:</strong><br>
+                → Ketik: <code>y</code> (Yes)
+            </div>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">5</span>Buat Database dan User untuk Moodle</h3>
+            
+            <pre><code># Login ke MySQL sebagai root
+sudo mysql -u root -p
+# Masukkan password root: RootDB123!</code></pre>
+
+            <div class="info-box">
+                <strong>📝 Setelah masuk ke MySQL prompt, jalankan SQL berikut:</strong>
+            </div>
+
+            <pre><code>-- Buat database moodle
+CREATE DATABASE moodle DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- Buat user moodleuser dengan akses dari manapun (%)
+CREATE USER 'moodleuser'@'%' IDENTIFIED BY 'Moodle123!';
+
+-- Berikan semua privilege pada database moodle
+GRANT ALL PRIVILEGES ON moodle.* TO 'moodleuser'@'%';
+
+-- Flush privileges
+FLUSH PRIVILEGES;
+
+-- Cek database yang sudah dibuat
+SHOW DATABASES;
+
+-- Keluar dari MySQL
+EXIT;</code></pre>
+
+            <div class="success-box">
+                ✅ Database <strong>moodle</strong> dan user <strong>moodleuser</strong> berhasil dibuat!
+            </div>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">6</span>Konfigurasi MySQL untuk Remote Access</h3>
+            
+            <pre><code># Edit konfigurasi MySQL
+sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf</code></pre>
+
+            <div class="info-box">
+                <strong>Cari baris yang berisi:</strong>
+                <pre><code>bind-address = 127.0.0.1</code></pre>
+                
+                <strong>Ubah menjadi:</strong>
+                <pre><code>bind-address = 0.0.0.0</code></pre>
+                
+                <strong>Atau tambahkan baris ini jika tidak ada:</strong>
+                <pre><code>bind-address = 0.0.0.0
+mysqlx-bind-address = 0.0.0.0</code></pre>
+            </div>
+
+            <div class="warning-box">
+                <strong>💡 Cara edit di nano:</strong><br>
+                • Gunakan arrow keys untuk navigasi<br>
+                • Edit teks sesuai kebutuhan<br>
+                • Tekan <code>Ctrl + O</code> untuk save<br>
+                • Tekan <code>Enter</code> untuk konfirmasi<br>
+                • Tekan <code>Ctrl + X</code> untuk keluar
+            </div>
+
+            <pre><code># Restart MySQL
+sudo systemctl restart mysql
+
+# Cek status
+sudo systemctl status mysql</code></pre>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">7</span>Test Koneksi Database dari VM Web Server</h3>
+            
+            <div class="info-box">
+                <strong>📝 Buka terminal baru atau SSH ke VM Web Server</strong>
+            </div>
+
+            <pre><code># Install MySQL client di VM Web Server
+ssh admin@192.168.xx.2
+sudo apt install mysql-client -y
+
+# Test koneksi ke database server
+mysql -h 192.168.xx.3 -u moodleuser -p
+# Password: Moodle123!
+
+# Jika berhasil connect, ketik:
+SHOW DATABASES;
+EXIT;</code></pre>
+
+            <div class="success-box">
+                ✅ Jika muncul list database termasuk <strong>moodle</strong>, berarti koneksi berhasil!
+            </div>
+
+            <div class="danger-box">
+                <strong>❌ Jika gagal connect:</strong><br>
+                • Cek firewall: <code>sudo ufw status</code><br>
+                • Disable firewall: <code>sudo ufw disable</code><br>
+                • Cek MySQL running: <code>sudo systemctl status mysql</code><br>
+                • Ping database server: <code>ping 192.168.xx.3</code>
+            </div>
+        </div>
+
+        <!-- BAGIAN 2: WEB SERVER -->
+        <div class="page-break"></div>
+        <h2>🌐 BAGIAN 2: SETUP WEB SERVER & MOODLE</h2>
+
+        <div class="step">
+            <h3><span class="step-number">8</span>Login ke VM Web Server</h3>
+            <pre><code>ssh admin@192.168.xx.2
+# Atau gunakan Console Proxmox</code></pre>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">9</span>Update Sistem</h3>
+            <pre><code>sudo apt update
+sudo apt upgrade -y</code></pre>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">10</span>Install Apache Web Server</h3>
+            <pre><code># Install Apache
+sudo apt install apache2 -y
+
+# Start Apache
+sudo systemctl start apache2
+
+# Enable auto start
+sudo systemctl enable apache2
+
+# Cek status
+sudo systemctl status apache2</code></pre>
+
+            <div class="tip-box">
+                <strong>💡 Test Apache:</strong> Buka browser di PC internal, akses <code>http://192.168.xx.2</code><br>
+                Harusnya muncul halaman <strong>"Apache2 Ubuntu Default Page"</strong>
+            </div>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">11</span>Install PHP dan Modul yang Dibutuhkan Moodle</h3>
+            <pre><code># Install PHP 8.1 dan modul
+sudo apt install php libapache2-mod-php -y
+
+# Install ekstensi PHP untuk Moodle
+sudo apt install php-mysql php-xml php-mbstring php-curl \
+                 php-zip php-gd php-intl php-soap \
+                 php-xmlrpc php-json -y
+
+# Cek versi PHP
+php -v</code></pre>
+
+            <div class="success-box">
+                ✅ Harusnya muncul: <strong>PHP 8.1.x</strong>
+            </div>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">12</span>Install Git</h3>
+            <pre><code>sudo apt install git -y
+
+# Cek versi
+git --version</code></pre>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">13</span>Download Moodle dari GitHub</h3>
+            <pre><code># Pindah ke direktori /opt
+cd /opt
+
+# Clone Moodle repository
+sudo git clone https://github.com/moodle/moodle.git
+
+# Masuk ke direktori moodle
+cd moodle
+
+# Lihat daftar branch/versi tersedia
+sudo git branch -a
+
+# Checkout ke versi stabil Moodle 4.1
+sudo git checkout MOODLE_401_STABLE</code></pre>
+
+            <div class="info-box">
+                <strong>📝 Versi Moodle:</strong><br>
+                • MOODLE_401_STABLE = Moodle 4.1 (Recommended)<br>
+                • MOODLE_402_STABLE = Moodle 4.2<br>
+                • MOODLE_403_STABLE = Moodle 4.3<br>
+                • MOODLE_404_STABLE = Moodle 4.4
+            </div>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">14</span>Copy Moodle ke Web Directory</h3>
+            <pre><code># Copy dari /opt/moodle ke /var/www/html/
+sudo cp -R /opt/moodle /var/www/html/
+
+# Buat direktori moodledata untuk file uploads
+sudo mkdir /var/moodledata
+
+# Set ownership ke www-data (user Apache)
+sudo chown -R www-data:www-data /var/www/html/moodle
+sudo chown -R www-data:www-data /var/moodledata
+
+# Set permissions
+sudo chmod -R 755 /var/www/html/moodle
+sudo chmod -R 777 /var/moodledata</code></pre>
+
+            <div class="warning-box">
+                <strong>⚠️ Penjelasan Permission:</strong><br>
+                • <code>755</code> = Owner bisa read/write/execute, others read/execute<br>
+                • <code>777</code> = Semua user bisa read/write/execute (untuk uploads)
+            </div>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">15</span>Konfigurasi Apache Virtual Host</h3>
+            <pre><code># Buat file konfigurasi Moodle
+sudo nano /etc/apache2/sites-available/moodle.conf</code></pre>
+
+            <div class="info-box">
+                <strong>Copy-paste konfigurasi berikut:</strong>
+            </div>
+
+            <pre><code>&lt;VirtualHost *:80&gt;
+    ServerAdmin admin@localhost
+    DocumentRoot /var/www/html/moodle
+    
+    &lt;Directory /var/www/html/moodle&gt;
+        Options FollowSymlinks
+        AllowOverride All
+        Require all granted
+    &lt;/Directory&gt;
+    
+    ErrorLog ${APACHE_LOG_DIR}/moodle_error.log
+    CustomLog ${APACHE_LOG_DIR}/moodle_access.log combined
+&lt;/VirtualHost&gt;</code></pre>
+
+            <div class="warning-box">
+                <strong>💡 Cara save di nano:</strong> <code>Ctrl + O</code> → <code>Enter</code> → <code>Ctrl + X</code>
+            </div>
+
+            <pre><code># Enable site Moodle
+sudo a2ensite moodle.conf
+
+# Disable default site
+sudo a2dissite 000-default.conf
+
+# Enable rewrite module
+sudo a2enmod rewrite
+
+# Test konfigurasi Apache
+sudo apache2ctl configtest
+
+# Restart Apache
+sudo systemctl restart apache2</code></pre>
+
+            <div class="success-box">
+                ✅ Jika muncul <strong>"Syntax OK"</strong>, konfigurasi Apache benar!
+            </div>
+        </div>
+
+        <!-- BAGIAN 3: INSTALASI MOODLE -->
+        <div class="page-break"></div>
+        <h2>🎓 BAGIAN 3: INSTALASI MOODLE VIA WEB</h2>
+
+        <div class="step">
+            <h3><span class="step-number">16</span>Akses Moodle dari Browser</h3>
+            
+            <div class="info-box">
+                <strong>Dari PC int-client:</strong><br>
+                Buka browser → Akses: <code>http://192.168.xx.2</code>
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Jika muncul error "403 Forbidden":</strong>
+                <pre><code>sudo chown -R www-data:www-data /var/www/html/moodle
+sudo chmod -R 755 /var/www/html/moodle</code></pre>
+            </div>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">17</span>Wizard Instalasi Moodle - Langkah 1: Pilih Bahasa</h3>
+            <ul>
+                <li>Pilih: <strong>Bahasa Indonesia</strong> atau <strong>English</strong></li>
+                <li>Klik: <strong>Next</strong></li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">18</span>Langkah 2: Konfirmasi Paths</h3>
+            
+            <table>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Web address</td>
+                    <td>http://192.168.xx.2</td>
+                </tr>
+                <tr>
+                    <td>Moodle directory</td>
+                    <td>/var/www/html/moodle</td>
+                </tr>
+                <tr>
+                    <td>Data directory</td>
+                    <td>/var/moodledata</td>
+                </tr>
+            </table>
+
+            <p>Klik: <strong>Next</strong></p>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">19</span>Langkah 3: Pilih Database Driver</h3>
+            <ul>
+                <li>Pilih: <strong>MariaDB (MySQL)</strong></li>
+                <li>Klik: <strong>Next</strong></li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">20</span>Langkah 4: Database Settings</h3>
+            
+            <table>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Database host</td>
+                    <td><strong>192.168.xx.3</strong></td>
+                </tr>
+                <tr>
+                    <td>Database name</td>
+                    <td><strong>moodle</strong></td>
+                </tr>
+                <tr>
+                    <td>Database user</td>
+                    <td><strong>moodleuser</strong></td>
+                </tr>
+                <tr>
+                    <td>Database password</td>
+                    <td><strong>Moodle123!</strong></td>
+                </tr>
+                <tr>
+                    <td>Tables prefix</td>
+                    <td><strong>mdl_</strong></td>
+                </tr>
+                <tr>
+                    <td>Database port</td>
+                    <td><strong>3306</strong></td>
+                </tr>
+                <tr>
+                    <td>Unix socket</td>
+                    <td>(kosongkan)</td>
+                </tr>
+            </table>
+
+            <p>Klik: <strong>Next</strong></p>
+
+            <div class="danger-box">
+                <strong>❌ Jika muncul error koneksi database:</strong><br>
+                1. Cek MySQL running di DB server: <code>sudo systemctl status mysql</code><br>
+                2. Test koneksi: <code>mysql -h 192.168.xx.3 -u moodleuser -p</code><br>
+                3. Cek firewall: <code>sudo ufw status</code> → disable jika aktif<br>
+                4. Cek bind-address di mysqld.cnf sudah 0.0.0.0
+            </div>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">21</span>Langkah 5: Copyright Notice</h3>
+            <ul>
+                <li>Baca copyright notice</li>
+                <li>Centang: <strong>☑ I have read these conditions and understood them</strong></li>
+                <li>Klik: <strong>Continue</strong></li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">22</span>Langkah 6: Server Checks</h3>
+            
+            <div class="info-box">
+                <strong>Moodle akan cek requirement sistem:</strong><br>
+                • PHP version<br>
+                • PHP extensions<br>
+                • Database connection<br>
+                • Directory permissions
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Jika ada yang merah (failed):</strong><br><br>
+                
+                <strong>Missing PHP extension:</strong>
+                <pre><code>sudo apt install php-[nama-extension] -y
+sudo systemctl restart apache2</code></pre>
+                
+                <strong>Directory permission error:</strong>
+                <pre><code>sudo chown -R www-data:www-data /var/www/html/moodle
+sudo chmod -R 755 /var/www/html/moodle
+sudo chmod -R 777 /var/moodledata</code></pre>
+            </div>
+
+            <p>Jika semua <strong>hijau ✓</strong>, klik: <strong>Continue</strong></p>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">23</span>Langkah 7: Instalasi Plugin & Database Setup</h3>
+            
+            <div class="info-box">
+                <strong>Proses ini akan:</strong><br>
+                • Install semua plugin Moodle<br>
+                • Create database tables<br>
+                • Setup initial configuration<br><br>
+                <strong>⏱️ Waktu: 5-10 menit</strong>
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ JANGAN REFRESH atau CLOSE browser selama proses ini!</strong>
+            </div>
+
+            <p>Tunggu sampai muncul <strong>"Continue"</strong> button, lalu klik.</p>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">24</span>Langkah 8: Buat Akun Administrator</h3>
+            
+            <table>
+                <tr>
+                    <th>Field</th>
+                    <th>Value (Contoh)</th>
+                </tr>
+                <tr>
+                    <td>Username</td>
+                    <td><strong>admin</strong> (tidak bisa diubah)</td>
+                </tr>
+                <tr>
+                    <td>New password</td>
+                    <td><strong>Admin123!</strong></td>
+                </tr>
+                <tr>
+                    <td>First name</td>
+                    <td><strong>Administrator</strong></td>
+                </tr>
+                <tr>
+                    <td>Surname</td>
+                    <td><strong>System</strong></td>
+                </tr>
+                <tr>
+                    <td>Email address</td>
+                    <td><strong>admin@example.com</strong></td>
+                </tr>
+                <tr>
+                    <td>City/town</td>
+                    <td><strong>Jakarta</strong> (atau kota Anda)</td>
+                </tr>
+                <tr>
+                    <td>Country</td>
+                    <td><strong>Indonesia</strong></td>
+                </tr>
+                <tr>
+                    <td>Timezone</td>
+                    <td><strong>Asia/Jakarta</strong></td>
+                </tr>
+            </table>
+
+            <div class="warning-box">
+                <strong>⚠️ CATAT password admin dengan baik!</strong> Anda akan gunakan untuk login nanti.
+            </div>
+
+            <p>Klik: <strong>Update profile</strong></p>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">25</span>Langkah 9: Front Page Settings</h3>
+            
+            <table>
+                <tr>
+                    <th>Field</th>
+                    <th>Value (Contoh)</th>
+                </tr>
+                <tr>
+                    <td>Full site name</td>
+                    <td><strong>LMS SMK Nusantara</strong></td>
+                </tr>
+                <tr>
+                    <td>Short name for site</td>
+                    <td><strong>LMS-SMK</strong></td>
+                </tr>
+                <tr>
+                    <td>Front page summary</td>
+                    <td><strong>Selamat datang di Learning Management System</strong></td>
+                </tr>
+            </table>
+
+            <p>Klik: <strong>Save changes</strong></p>
+
+            <div class="success-box">
+                🎉 <strong>SELAMAT!</strong> Moodle berhasil terinstall!
+            </div>
+        </div>
+
+        <!-- BAGIAN 4: KONFIGURASI LANJUTAN -->
+        <div class="page-break"></div>
+        <h2>⚙️ BAGIAN 4: KONFIGURASI LANJUTAN MOODLE</h2>
+
+        <div class="step">
+            <h3><span class="step-number">26</span>Login ke Moodle</h3>
+            <ul>
+                <li>Akses: <code>http://192.168.xx.2</code></li>
+                <li>Klik: <strong>Log in</strong></li>
+                <li>Username: <strong>admin</strong></li>
+                <li>Password: <strong>Admin123!</strong> (atau password Anda)</li>
+                <li>Klik: <strong>Log in</strong></li>
+            </ul>
+
+            <div class="tip-box">
+                <strong>💡 Dashboard admin Moodle akan muncul!</strong>
+            </div>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">27</span>Buat Course (Mata Pelajaran) untuk Testing</h3>
+            
+            <ol>
+                <li>Klik <strong>Site administration</strong> di sidebar kiri</li>
+                <li>Klik <strong>Courses</strong> → <strong>Add a new course</strong></li>
+                <li>Isi form:
+                    <ul>
+                        <li><strong>Course full name:</strong> Jaringan Komputer Dasar</li>
+                        <li><strong>Course short name:</strong> JKD-101</li>
+                        <li><strong>Course start date:</strong> (pilih tanggal hari ini)</li>
+                    </ul>
+                </li>
+                <li>Scroll ke bawah, klik: <strong>Save and display</strong></li>
+            </ol>
+
+            <div class="success-box">
+                ✅ Course pertama berhasil dibuat!
+            </div>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">28</span>Buat User (Siswa) untuk Testing</h3>
+            
+            <ol>
+                <li>Klik <strong>Site administration</strong></li>
+                <li>Klik <strong>Users</strong> → <strong>Accounts</strong> → <strong>Add a new user</strong></li>
+                <li>Isi form:
+                    <ul>
+                        <li><strong>Username:</strong> siswa01</li>
+                        <li><strong>New password:</strong> Siswa123!</li>
+                        <li><strong>First name:</strong> Budi</li>
+                        <li><strong>Surname:</strong> Santoso</li>
+                        <li><strong>Email address:</strong> siswa01@example.com</li>
+                        <li><strong>City/town:</strong> Jakarta</li>
+                    </ul>
+                </li>
+                <li>Klik: <strong>Create user</strong></li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">29</span>Enroll User ke Course</h3>
+            
+            <ol>
+                <li>Klik <strong>Site home</strong> di navigation bar atas</li>
+                <li>Klik course <strong>Jaringan Komputer Dasar</strong></li>
+                <li>Klik icon ⚙️ (gear) di pojok kanan atas</li>
+                <li>Klik <strong>Enrol users</strong></li>
+                <li>Klik tombol <strong>Enrol users</strong></li>
+                <li>Cari user: <strong>Budi Santoso</strong></li>
+                <li>Klik <strong>Enrol</strong></li>
+            </ol>
+
+            <div class="success-box">
+                ✅ User <strong>siswa01</strong> berhasil di-enroll ke course!
+            </div>
+        </div>
+
+        <!-- BAGIAN 5: TESTING -->
+        <div class="page-break"></div>
+        <h2>🧪 BAGIAN 5: TESTING MOODLE</h2>
+
+        <div class="step">
+            <h3><span class="step-number">30</span>Test Akses dari Internal Client</h3>
+            
+            <div class="info-box">
+                <strong>Dari PC int-client (192.168.100.x):</strong>
+            </div>
+
+            <ol>
+                <li>Buka browser</li>
+                <li>Akses: <code>http://192.168.xx.2</code></li>
+                <li>Login sebagai siswa:
+                    <ul>
+                        <li>Username: <strong>siswa01</strong></li>
+                        <li>Password: <strong>Siswa123!</strong></li>
+                    </ul>
+                </li>
+                <li>Cek apakah bisa lihat course <strong>Jaringan Komputer Dasar</strong></li>
+            </ol>
+
+            <div class="success-box">
+                ✅ <strong>Screenshot</strong> halaman dashboard siswa untuk dokumentasi!
+            </div>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">31</span>Test Akses dari External Client (via Port Forward)</h3>
+            
+            <div class="info-box">
+                <strong>Dari PC ext-client (172.16.100.100+xx):</strong>
+            </div>
+
+            <ol>
+                <li>Pastikan port forwarding sudah dikonfigurasi di router:
+                    <pre><code>172.16.100.xx:9090 → 192.168.xx.2:80</code></pre>
+                </li>
+                <li>Buka browser</li>
+                <li>Akses: <code>http://172.16.100.xx:9090</code></li>
+                <li>Login sebagai admin atau siswa</li>
+            </ol>
+
+            <div class="warning-box">
+                <strong>⚠️ Jika tidak bisa akses:</strong><br>
+                • Cek port forwarding di router<br>
+                • Cek firewall di router<br>
+                • Test dari router: <code>curl http://192.168.xx.2</code>
+            </div>
+
+            <div class="success-box">
+                ✅ <strong>Screenshot</strong> halaman login dari ext-client untuk dokumentasi!
+            </div>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">32</span>Test Upload File & Activity</h3>
+            
+            <ol>
+                <li>Login sebagai admin</li>
+                <li>Masuk ke course <strong>Jaringan Komputer Dasar</strong></li>
+                <li>Klik <strong>Turn editing on</strong></li>
+                <li>Klik <strong>Add an activity or resource</strong></li>
+                <li>Pilih <strong>Assignment</strong></li>
+                <li>Isi:
+                    <ul>
+                        <li><strong>Assignment name:</strong> Tugas 1 - Topologi Jaringan</li>
+                        <li><strong>Description:</strong> Buat diagram topologi jaringan</li>
+                    </ul>
+                </li>
+                <li>Klik <strong>Save and return to course</strong></li>
+            </ol>
+
+            <div class="success-box">
+                ✅ Activity pertama berhasil dibuat!
+            </div>
+        </div>
+
+        <!-- BAGIAN 6: BACKUP & RESTORE -->
+        <div class="page-break"></div>
+        <h2>💾 BAGIAN 6: BACKUP & RESTORE (UNTUK UJIAN)</h2>
+
+        <div class="step">
+            <h3><span class="step-number">33</span>Setup Automatic Backup - Database</h3>
+            
+            <div class="info-box">
+                <strong>Di VM Database Server (192.168.xx.3):</strong>
+            </div>
+
+            <pre><code># Buat direktori backup
+sudo mkdir -p /backup
+
+# Buat script backup
+sudo nano /usr/local/bin/backup-db.sh</code></pre>
+
+            <div class="info-box">
+                <strong>Copy script berikut:</strong>
+            </div>
+
+            <pre><code>#!/bin/bash
+# Script backup database Moodle
+
+DATE=$(date +%Y%m%d_%H%M%S)
+BACKUP_DIR="/backup"
+DB_NAME="moodle"
+DB_USER="root"
+DB_PASS="RootDB123!"
+
+# Buat direktori backup jika belum ada
+mkdir -p $BACKUP_DIR
+
+# Backup database
+mysqldump -u $DB_USER -p$DB_PASS $DB_NAME > $BACKUP_DIR/moodle_db_$DATE.sql
+
+# Compress backup
+tar -czf $BACKUP_DIR/moodle_db_$DATE.tar.gz $BACKUP_DIR/moodle_db_$DATE.sql
+
+# Hapus file SQL yang belum dikompress
+rm $BACKUP_DIR/moodle_db_$DATE.sql
+
+# Hapus backup lebih dari 7 hari
+find $BACKUP_DIR -name "moodle_db_*.tar.gz" -mtime +7 -delete
+
+echo "Database backup completed: $BACKUP_DIR/moodle_db_$DATE.tar.gz"</code></pre>
+
+            <pre><code># Set executable permission
+sudo chmod +x /usr/local/bin/backup-db.sh
+
+# Test script
+sudo /usr/local/bin/backup-db.sh
+
+# Cek hasil backup
+ls -lh /backup/</code></pre>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">34</span>Setup Automatic Backup - Web Files</h3>
+            
+            <div class="info-box">
+                <strong>Di VM Web Server (192.168.xx.2):</strong>
+            </div>
+
+            <pre><code># Buat direktori backup
+sudo mkdir -p /backup
+
+# Buat script backup
+sudo nano /usr/local/bin/backup-web.sh</code></pre>
+
+            <pre><code>#!/bin/bash
+# Script backup Moodle files
+
+DATE=$(date +%Y%m%d_%H%M%S)
+BACKUP_DIR="/backup"
+
+# Buat direktori backup jika belum ada
+mkdir -p $BACKUP_DIR
+
+# Backup Moodle files dan config
+tar -czf $BACKUP_DIR/moodle_files_$DATE.tar.gz \
+    /var/www/html/moodle \
+    /var/moodledata \
+    /etc/apache2/sites-available/moodle.conf
+
+# Hapus backup lebih dari 7 hari
+find $BACKUP_DIR -name "moodle_files_*.tar.gz" -mtime +7 -delete
+
+echo "Files backup completed: $BACKUP_DIR/moodle_files_$DATE.tar.gz"</code></pre>
+
+            <pre><code># Set executable permission
+sudo chmod +x /usr/local/bin/backup-web.sh
+
+# Test script
+sudo /usr/local/bin/backup-web.sh
+
+# Cek hasil backup
+ls -lh /backup/</code></pre>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">35</span>Setup Cronjob untuk Backup Otomatis</h3>
+            
+            <div class="info-box">
+                <strong>Di VM Database Server:</strong>
+            </div>
+
+            <pre><code># Edit crontab root
+sudo crontab -e
+
+# Pilih editor (pilih nano jika ditanya)
+# Tambahkan baris berikut di akhir file:
+
+# Backup database setiap hari jam 02:00
+0 2 * * * /usr/local/bin/backup-db.sh >> /var/log/backup-db.log 2>&1</code></pre>
+
+            <div class="info-box">
+                <strong>Di VM Web Server:</strong>
+            </div>
+
+            <pre><code># Edit crontab root
+sudo crontab -e
+
+# Tambahkan baris berikut:
+
+# Backup files setiap hari jam 02:30
+30 2 * * * /usr/local/bin/backup-web.sh >> /var/log/backup-web.log 2>&1</code></pre>
+
+            <div class="tip-box">
+                <strong>💡 Format Cronjob:</strong><br>
+                <code>* * * * * command</code><br>
+                ┬ ┬ ┬ ┬ ┬<br>
+                │ │ │ │ │<br>
+                │ │ │ │ └─ Day of week (0-6, 0=Sunday)<br>
+                │ │ │ └─── Month (1-12)<br>
+                │ │ └───── Day of month (1-31)<br>
+                │ └─────── Hour (0-23)<br>
+                └───────── Minute (0-59)
+            </div>
+
+            <pre><code># Verifikasi cronjob
+sudo crontab -l</code></pre>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">36</span>Cara Restore dari Backup</h3>
+            
+            <h4>Restore Database:</h4>
+            <pre><code># Di VM Database Server
+cd /backup
+
+# Extract backup
+tar -xzf moodle_db_20250128_020000.tar.gz
+
+# Restore ke MySQL
+mysql -u root -p moodle < moodle_db_20250128_020000.sql
+
+# Verifikasi
+mysql -u root -p
+USE moodle;
+SHOW TABLES;
+EXIT;</code></pre>
+
+            <h4>Restore Files:</h4>
+            <pre><code># Di VM Web Server
+cd /backup
+
+# Stop Apache
+sudo systemctl stop apache2
+
+# Extract backup
+sudo tar -xzf moodle_files_20250128_023000.tar.gz -C /
+
+# Restart Apache
+sudo systemctl start apache2</code></pre>
+        </div>
+
+        <!-- BAGIAN 7: UPDATE & UPGRADE -->
+        <div class="page-break"></div>
+        <h2>🔄 BAGIAN 7: UPDATE, PATCHING & UPGRADE (UNTUK UJIAN)</h2>
+
+        <div class="step">
+            <h3><span class="step-number">37</span>Aktivitas Insidental - System Update</h3>
+            
+            <div class="info-box">
+                <strong>Lakukan di KEDUA VM (Web Server & Database Server):</strong>
+            </div>
+
+            <pre><code># Cek versi sistem sebelum update
+lsb_release -a
+php -v
+apache2 -v
+mysql --version
+
+# Catat versi untuk dokumentasi!
+
+# Update system
+sudo apt update
+sudo apt upgrade -y
+
+# Cek versi setelah update
+php -v
+apache2 -v
+mysql --version
+
+# Catat versi baru untuk dokumentasi!</code></pre>
+
+            <div class="success-box">
+                ✅ <strong>Screenshot</strong> versi sebelum dan sesudah untuk laporan!
+            </div>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">38</span>Security Patching</h3>
+            
+            <pre><code># Install security updates
+sudo apt install unattended-upgrades -y
+
+# Configure auto security updates
+sudo dpkg-reconfigure --priority=low unattended-upgrades
+
+# Check for security updates
+sudo apt list --upgradable
+
+# Install security patches
+sudo apt upgrade -y</code></pre>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">39</span>Upgrade Moodle ke Versi Terbaru</h3>
+            
+            <div class="warning-box">
+                <strong>⚠️ BACKUP DULU sebelum upgrade!</strong>
+            </div>
+
+            <pre><code># Di VM Web Server
+
+# Backup dulu!
+sudo /usr/local/bin/backup-web.sh
+
+# Masuk ke direktori Moodle source
+cd /opt/moodle
+
+# Update repository
+sudo git fetch
+
+# Lihat versi tersedia
+sudo git branch -a
+
+# Upgrade ke versi yang lebih baru (misal 4.2)
+sudo git checkout MOODLE_402_STABLE
+
+# Copy file yang sudah diupdate
+sudo cp -R /opt/moodle/* /var/www/html/moodle/
+
+# Set permission
+sudo chown -R www-data:www-data /var/www/html/moodle
+sudo chmod -R 755 /var/www/html/moodle</code></pre>
+
+            <div class="info-box">
+                <strong>Setelah itu, akses Moodle via browser:</strong><br>
+                <code>http://192.168.xx.2/admin</code><br><br>
+                Moodle akan mendeteksi upgrade dan menjalankan database upgrade wizard.
+            </div>
+
+            <ol>
+                <li>Login sebagai admin</li>
+                <li>Ikuti wizard upgrade</li>
+                <li>Klik <strong>Continue</strong> di setiap step</li>
+                <li>Tunggu proses upgrade selesai</li>
+            </ol>
+
+            <div class="success-box">
+                ✅ Catat versi Moodle sebelum dan sesudah upgrade untuk laporan!
+            </div>
+        </div>
+
+        <!-- DOKUMENTASI -->
+        <div class="page-break"></div>
+        <h2>📸 BAGIAN 8: DOKUMENTASI UNTUK LAPORAN</h2>
+
+        <div class="step">
+            <h3><span class="step-number">40</span>Screenshot yang Harus Diambil</h3>
+            
+            <div class="checklist">
+                <ul>
+                    <li>Dashboard Proxmox menampilkan 2 VM running</li>
+                    <li>Resource usage VM (CPU, RAM, Uptime)</li>
+                    <li>Terminal saat instalasi MySQL</li>
+                    <li>Terminal saat instalasi Apache & PHP</li>
+                    <li>Terminal saat download Moodle dari Git</li>
+                    <li>Halaman instalasi Moodle (wizard)</li>
+                    <li>Server checks (semua hijau)</li>
+                    <li>Dashboard admin Moodle</li>
+                    <li>Halaman course yang sudah dibuat</li>
+                    <li>Login siswa dari int-client (http://192.168.xx.2)</li>
+                    <li>Login dari ext-client (http://172.16.100.xx:9090)</li>
+                    <li>Hasil test ping antar VM</li>
+                    <li>Konfigurasi cronjob backup</li>
+                    <li>List file backup di /backup/</li>
+                    <li>Versi sistem sebelum dan sesudah update</li>
+                    <li>Konfigurasi Apache (moodle.conf)</li>
+                    <li>Konfigurasi MySQL (bind-address)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- TROUBLESHOOTING -->
+        <div class="page-break"></div>
+        <h2>🔧 TROUBLESHOOTING UMUM</h2>
+
+        <div class="danger-box">
+            <h3>❌ Error: "Cannot connect to database"</h3>
+            <strong>Solusi:</strong>
+            <pre><code># Cek MySQL running di DB server
+sudo systemctl status mysql
+
+# Cek bind-address
+sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+# Pastikan: bind-address = 0.0.0.0
+
+# Restart MySQL
+sudo systemctl restart mysql
+
+# Test koneksi dari web server
+mysql -h 192.168.xx.3 -u moodleuser -p
+
+# Cek firewall
+sudo ufw status
+sudo ufw disable  # untuk testing</code></pre>
+        </div>
+
+        <div class="danger-box">
+            <h3>❌ Error: "403 Forbidden"</h3>
+            <strong>Solusi:</strong>
+            <pre><code># Set permission
+sudo chown -R www-data:www-data /var/www/html/moodle
+sudo chmod -R 755 /var/www/html/moodle
+sudo chmod -R 777 /var/moodledata
+
+# Restart Apache
+sudo systemctl restart apache2</code></pre>
+        </div>
+
+        <div class="danger-box">
+            <h3>❌ Error: "PHP extension not found"</h3>
+            <strong>Solusi:</strong>
+            <pre><code># Install extension yang missing
+sudo apt install php-[nama-extension] -y
+
+# Contoh:
+sudo apt install php-mysql php-xml php-mbstring php-curl php-zip php-gd -y
+
+# Restart Apache
+sudo systemctl restart apache2</code></pre>
+        </div>
+
+        <div class="danger-box">
+            <h3>❌ Moodle sangat lambat</h3>
+            <strong>Solusi:</strong>
+            <pre><code># Install PHP OPcache
+sudo apt install php-opcache -y
+
+# Restart Apache
+sudo systemctl restart apache2
+
+# Enable Moodle cache
+# Login as admin → Site administration → Plugins → Caching → Configuration
+# Enable all cache stores</code></pre>
+        </div>
+
+        <!-- CHECKLIST AKHIR -->
+        <div class="page-break"></div>
+        <h2>✅ CHECKLIST PENYELESAIAN</h2>
+
+        <div class="success-box">
+            <h3>Checklist untuk Asesor:</h3>
+            <ul class="checklist">
+                <li>2 VM (Web & DB) berjalan dengan baik</li>
+                <li>MySQL terinstall dan running di DB server</li>
+                <li>Apache & PHP terinstall di Web server</li>
+                <li>Moodle terinstall dan bisa diakses</li>
+                <li>Database connection berhasil (Web ↔ DB)</li>
+                <li>Bisa login sebagai admin</li>
+                <li>Course & User sudah dibuat</li>
+                <li>Akses dari int-client berhasil (http://192.168.xx.2)</li>
+                <li>Akses dari ext-client berhasil (http://172.16.100.xx:9090)</li>
+                <li>Backup otomatis dengan cronjob berjalan</li>
+                <li>File backup tersimpan di /backup/</li>
+                <li>System update & patching dilakukan</li>
+                <li>Versi sebelum & sesudah update tercatat</li>
+                <li>Semua screenshot diambil untuk dokumentasi</li>
+                <li>Laporan teknis lengkap dan dicetak</li>
+            </ul>
+        </div>
+
+        <!-- PENUTUP -->
+        <div class="page-break"></div>
+        <h2>🎯 KESIMPULAN</h2>
+
+        <div class="info-box">
+            <p><strong>Anda telah berhasil:</strong></p>
+            <ol>
+                <li>✅ Membuat 2 Virtual Machine di Proxmox</li>
+                <li>✅ Menginstall Ubuntu Server 22.04 LTS</li>
+                <li>✅ Setup MySQL Database Server</li>
+                <li>✅ Setup Apache Web Server & PHP</li>
+                <li>✅ Menginstall Moodle LMS</li>
+                <li>✅ Konfigurasi jaringan dan routing</li>
+                <li>✅ Setup backup otomatis dengan cronjob</li>
+                <li>✅ Melakukan testing akses internal & eksternal</li>
+                <li>✅ Implementasi update, patching & upgrade</li>
+                <li>✅ Dokumentasi lengkap dengan screenshot</li>
+            </ol>
+        </div>
+
+        <div class="success-box" style="text-align: center; font-size: 20px; padding: 30px;">
+            <strong>🎉 SELAMAT! 🎉</strong><br>
+            <strong>Anda telah menyelesaikan instalasi Moodle LMS!</strong><br><br>
+            <p style="font-size: 16px;">Semoga sukses dalam ujian praktik TKJ Anda! 🚀</p>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <p><strong>Jika ada pertanyaan atau kendala:</strong></p>
+            <p>Dokumentasikan error yang muncul dan konsultasikan dengan asesor</p>
+            <p style="margin-top: 20px;"><strong>"Practice makes perfect!"</strong></p>
+        </div>
+
+    </div>
+</body>
+</html>
