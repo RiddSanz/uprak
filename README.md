@@ -229,4 +229,4 @@ IP → Firewall → Connections
 
 ---
 
-✍️ Author: **Farid Achmad**
+✍️ Author: **Raden Mas Parid**
